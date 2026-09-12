@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
         <ToastProvider>
           <SiteDock />
-          <main className="mx-auto w-full max-w-7xl px-6 pb-24 pt-24">{children}</main>
+          <main className="mx-auto w-full max-w-7xl px-6 pb-28 pt-24 md:pb-24">{children}</main>
           <SiteFooter />
           <TerminalLauncher />
           <ScrollToTop />

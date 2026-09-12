@@ -295,7 +295,7 @@ export function LessonEnhancements({
       <button
         type="button"
         onClick={() => setShowHelp(true)}
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 rounded-full border border-border bg-white/90 px-3 py-2 text-xs text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:border-primary-200 hover:text-primary-700"
+        className="fixed bottom-6 left-6 z-50 hidden items-center gap-2 rounded-full border border-border bg-white/90 px-3 py-2 text-xs text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:border-primary-200 hover:text-primary-700 sm:flex"
         title="کلیدهای میانبر"
       >
         <Keyboard className="size-4" />

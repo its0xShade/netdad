@@ -19,7 +19,7 @@ export function SiteDock() {
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <header className="fixed inset-x-0 top-4 z-50 hidden justify-center px-4 md:flex">
       <Dock className="gap-0.5 px-2 py-1.5">
         {/* Brand */}
         <Link

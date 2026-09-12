@@ -16,7 +16,7 @@ export function TerminalLauncher() {
         onClick={() => setOpen((v) => !v)}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
-        className="fixed bottom-6 left-6 z-50 grid size-12 place-items-center rounded-full bg-[#0d1117] text-emerald-400 shadow-xl shadow-black/25 transition-colors hover:bg-[#161b22]"
+        className="fixed bottom-24 left-4 z-50 grid size-12 place-items-center rounded-full bg-[#0d1117] text-emerald-400 shadow-xl shadow-black/25 transition-colors hover:bg-[#161b22] md:bottom-6 md:left-6"
         aria-label={open ? "بستن ترمینال" : "باز کردن ترمینال شبیه‌ساز"}
         title="ترمینال شبکه (Ctrl+`)"
       >
@@ -41,7 +41,7 @@ export function TerminalLauncher() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ type: "spring", stiffness: 280, damping: 26 }}
-            className="fixed bottom-20 left-6 z-50 w-[min(92vw,640px)]"
+            className="fixed bottom-28 left-4 z-50 w-[min(92vw,640px)] md:bottom-20 md:left-6"
           >
             <NetworkTerminal onClose={() => setOpen(false)} />
           </motion.div>
