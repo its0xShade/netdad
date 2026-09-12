@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" rx="20" fill="#f8fafc"/>
+  <rect x="24" y="24" width="352" height="152" rx="16" fill="white" stroke="#10b981" stroke-width="2"/>
+  <rect x="48" y="48" width="56" height="56" rx="12" fill="#10b981"/>
+  <path d="M66 104V62L104 104V62" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="124" y="82" font-family="Tahoma, sans-serif" font-size="34" font-weight="bold" fill="#0f172a">نت‌داد</text>
+  <text x="124" y="110" font-family="Tahoma, sans-serif" font-size="15" fill="#64748b">آکادمی تخصصی شبکه — از پایه تا CCNA</text>
+  <circle cx="300" cy="124" r="5" fill="#10b981"/>
+  <circle cx="320" cy="124" r="5" fill="#10b981"/>
+  <circle cx="340" cy="124" r="5" fill="#10b981"/>
+</svg>
