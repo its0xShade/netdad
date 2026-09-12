@@ -16,7 +16,21 @@ export function ProfileClient({ allLessons }: { allLessons: LessonMeta[] }) {
 
   return (
     <>
-      {/* Completed lessons */}
+      {/* ══ Overall progress (dynamic) ══ */}
+      <div className="card p-6">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-base font-bold text-text-primary">پیشرفت کل دوره</h2>
+          <span className="text-xs font-bold text-primary-600">{toFaDigits(pct)}٪</span>
+        </div>
+        <div className="progress-bar">
+          <div className="progress-fill transition-all duration-500" style={{ width: `${pct}%` }} />
+        </div>
+        <p className="mt-3 text-xs text-text-muted">
+          از {toFaDigits(allLessons.length)} درس — {toFaDigits(doneLessons.length)} درس تکمیل شده
+        </p>
+      </div>
+
+      {/* ══ Completed lessons ══ */}
       <div className="card p-6">
         <h2 className="flex items-center gap-2 text-base font-bold text-text-primary">
           <CheckCircle2 className="size-4 text-primary-600" />
@@ -31,7 +45,7 @@ export function ProfileClient({ allLessons }: { allLessons: LessonMeta[] }) {
                 <Link href={`/lesson/${l.id}`} className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors hover:bg-primary-50/50 no-underline">
                   <span className="size-2 shrink-0 rounded-full bg-primary-500" />
                   <span className="truncate font-medium text-text-primary group-hover:text-primary-700">{l.title}</span>
-                  <span className="ms-auto text-xs text-text-light">۰{Math.floor(l.chapter)}.{l.order}</span>
+                  <span className="ms-auto text-xs text-text-light">{toFaDigits(Math.floor(l.chapter))}.{toFaDigits(l.order)}</span>
                 </Link>
               </li>
             ))}
@@ -39,7 +53,7 @@ export function ProfileClient({ allLessons }: { allLessons: LessonMeta[] }) {
         )}
       </div>
 
-      {/* Bookmarks */}
+      {/* ══ Bookmarks ══ */}
       <div className="card p-6">
         <h2 className="flex items-center gap-2 text-base font-bold text-text-primary">
           <Bookmark className="size-4 text-primary-600" />
