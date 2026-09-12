@@ -11,7 +11,7 @@ import { CommandPalette } from "@/components/command-palette";
 import { ScrollToTop } from "@/components/motion/scroll-to-top";
 import { MobileNav } from "@/components/mobile-nav";
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://netdad.ir";
 
