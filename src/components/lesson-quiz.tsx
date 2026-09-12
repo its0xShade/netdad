@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { CheckCircle2, XCircle, RotateCcw, Trophy } from "lucide-react";
+import { CheckCircle2, XCircle, RotateCcw, Trophy, Zap } from "lucide-react";
 import { ApprovalCard } from "@/components/agents/approval-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toFaDigits } from "@/lib/format";
+import { useGamification } from "@/lib/gamification";
 
 export type QuizQuestion = {
   id: string;
@@ -17,6 +18,7 @@ export type QuizQuestion = {
 };
 
 export function LessonQuiz({ questions }: { questions: QuizQuestion[] }) {
+  const { finishQuiz } = useGamification();
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -39,6 +41,7 @@ export function LessonQuiz({ questions }: { questions: QuizQuestion[] }) {
       setAnswered(false);
     } else {
       setFinished(true);
+      finishQuiz(score, questions.length);
     }
   }
 
@@ -58,6 +61,9 @@ export function LessonQuiz({ questions }: { questions: QuizQuestion[] }) {
         <h3 className="mt-4 text-xl font-bold text-text-primary">آزمون تمام شد!</h3>
         <p className="mt-2 text-sm text-text-muted">
           نمره شما: {toFaDigits(score)} از {toFaDigits(questions.length)} ({toFaDigits(pct)}٪)
+        </p>
+        <p className="mt-2 inline-flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-700">
+          <Zap className="size-3.5" /> +{toFaDigits(score * 5)} XP گرفتی!
         </p>
         <div className="mx-auto mt-4 h-3 w-full max-w-xs overflow-hidden rounded-full bg-gray-100">
           <div className="h-full rounded-full bg-primary-500 transition-all" style={{ width: `${pct}%` }} />

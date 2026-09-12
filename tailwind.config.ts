@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Vazirmatn", "Inter", "system-ui", "sans-serif"],
+        sans: ["Vazirmatn Variable", "Vazirmatn", "Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       colors: {

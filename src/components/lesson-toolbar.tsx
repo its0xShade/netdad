@@ -1,13 +1,16 @@
 "use client";
-import { Bookmark, Check, Circle } from "lucide-react";
+import { Bookmark, Check, Circle, Zap } from "lucide-react";
 import { useBookmarks } from "@/lib/bookmarks";
 import { useProgress } from "@/lib/progress";
+import { useGamification } from "@/lib/gamification";
 import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
+import { toFaDigits } from "@/lib/format";
 
 export function LessonToolbar({ lessonId }: { lessonId: string }) {
   const { isBookmarked, toggle: toggleBookmark } = useBookmarks();
   const { isCompleted, toggle: toggleComplete } = useProgress();
+  const { addXp } = useGamification();
   const { toast } = useToast();
   const bm = isBookmarked(lessonId);
   const done = isCompleted(lessonId);
@@ -25,11 +28,20 @@ export function LessonToolbar({ lessonId }: { lessonId: string }) {
   function handleComplete() {
     const was = done;
     toggleComplete(lessonId);
-    toast({
-      title: was ? "درس ناتمام شد" : "آفرین! درس تکمیل شد 🎉",
-      description: was ? "از لیست تکمیل‌شده حذف شد." : "پیشرفتت ذخیره شد — ادامه بده!",
-      variant: was ? "info" : "success",
-    });
+    if (!was) {
+      addXp(15);
+      toast({
+        title: "آفرین! درس تکمیل شد 🎉",
+        description: `+۱۵ XP گرفتی — با ادامه مسیر، سطحت بالا می‌ره!`,
+        variant: "success",
+      });
+    } else {
+      toast({
+        title: "درس ناتمام شد",
+        description: "از لیست تکمیل‌شده حذف شد.",
+        variant: "info",
+      });
+    }
   }
 
   return (

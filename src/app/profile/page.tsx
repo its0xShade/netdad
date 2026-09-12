@@ -3,6 +3,7 @@ import { BookOpen, Bookmark, Clock, GraduationCap, CheckCircle2 } from "lucide-r
 import { buildCourse } from "@/lib/content";
 import { toFaDigits } from "@/lib/format";
 import { ProfileClient } from "@/components/profile-client";
+import { GamificationCard } from "@/components/gamification-card";
 
 export const metadata = { title: "پیشرفت من" };
 
@@ -40,9 +41,10 @@ export default function ProfilePage() {
         ))}
       </div>
 
-      {/* Main grid */}
+      {/* Gamification */}
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-6">
+          <GamificationCard />
           <div className="card p-6">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-base font-bold text-text-primary">پیشرفت کل دوره</h2>

@@ -141,6 +141,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
         nextId={next?.id ?? null}
         prevTitle={prev?.title ?? ""}
         nextTitle={next?.title ?? ""}
+        chapter={chapter}
       />
     </div>
   );

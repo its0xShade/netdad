@@ -34,14 +34,16 @@
 @layer base {
   html {
     direction: rtl;
-    font-family: "Vazirmatn", "Inter", system-ui, sans-serif;
+    font-family: "Vazirmatn Variable", "Vazirmatn", "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+    font-weight: 400;
   }
   body {
     background: var(--background);
     color: var(--text-primary);
     min-height: 100vh;
+    font-weight: 400;
   }
   ::selection {
     background: var(--color-primary-100);

@@ -7,21 +7,34 @@ import { cn } from "@/lib/utils";
 
 export function LessonDiagram({ chapter }: { chapter: number }) {
   return (
-    <div className="not-prose my-6 rounded-2xl border border-border bg-gradient-to-b from-gray-50 to-white p-6" dir="ltr">
-      {chapter === 2 && <OsiDiagram />}
-      {chapter === 8 && <TcpHandshake />}
-      {chapter === 1 && <NetworkBasic />}
-      {chapter === 5 && <SubnetDiagram />}
-      {chapter === 3 && <CableDiagram />}
-      {chapter === 4 && <SwitchDiagram />}
-      {chapter === 7 && <RoutingDiagram />}
-      {chapter === 9 && <DnsDiagram />}
-      {chapter === 13 && <Ipv6Diagram />}
-      {chapter === 11 && <SecurityDiagram />}
-      {chapter === 10 && <WirelessDiagram />}
-      {chapter === 12 && <TroubleshootDiagram />}
-      {chapter === 6 && <ArpDiagram />}
-      {chapter === 14 && <CloudDiagram />}
+    <div className="not-prose my-6 overflow-hidden rounded-2xl border border-primary-100 bg-gradient-to-b from-emerald-50/60 via-white to-white shadow-sm" dir="ltr">
+      <div className="flex items-center justify-between border-b border-primary-100 bg-white/60 px-5 py-2.5">
+        <p className="text-[11px] font-bold uppercase tracking-wider text-primary-600">نمودار آموزشی</p>
+        <div className="flex gap-1">
+          <span className="size-2 rounded-full bg-emerald-400" />
+          <span className="size-2 rounded-full bg-teal-400" />
+          <span className="size-2 rounded-full bg-amber-400" />
+        </div>
+      </div>
+      <div className="flex items-center justify-center p-6">
+        {chapter === 2 && <OsiDiagram />}
+        {chapter === 8 && <TcpHandshake />}
+        {chapter === 1 && <NetworkBasic />}
+        {chapter === 5 && <SubnetDiagram />}
+        {chapter === 3 && <CableDiagram />}
+        {chapter === 4 && <SwitchDiagram />}
+        {chapter === 7 && <RoutingDiagram />}
+        {chapter === 9 && <DnsDiagram />}
+        {chapter === 13 && <Ipv6Diagram />}
+        {chapter === 11 && <SecurityDiagram />}
+        {chapter === 10 && <WirelessDiagram />}
+        {chapter === 12 && <TroubleshootDiagram />}
+        {chapter === 6 && <ArpDiagram />}
+        {chapter === 14 && <CloudDiagram />}
+        {chapter === 0 && (
+          <p className="text-xs text-text-light p-4">نمودار این بخش به‌زودی</p>
+        )}
+      </div>
     </div>
   );
 }
@@ -29,16 +42,25 @@ export function LessonDiagram({ chapter }: { chapter: number }) {
 /* ─── Individual diagram components ─── */
 
 function LayerStack({ layers, title }: { layers: string[]; title: string }) {
-  const colors = ["bg-emerald-100 text-emerald-800 border-emerald-200", "bg-teal-100 text-teal-800 border-teal-200", "bg-cyan-100 text-cyan-800 border-cyan-200", "bg-sky-100 text-sky-800 border-sky-200", "bg-blue-100 text-blue-800 border-blue-200", "bg-indigo-100 text-indigo-800 border-indigo-200", "bg-violet-100 text-violet-800 border-violet-200"];
+  const colors = [
+    "bg-gradient-to-r from-emerald-50 to-emerald-100 text-emerald-800 border-emerald-200",
+    "bg-gradient-to-r from-teal-50 to-teal-100 text-teal-800 border-teal-200",
+    "bg-gradient-to-r from-cyan-50 to-cyan-100 text-cyan-800 border-cyan-200",
+    "bg-gradient-to-r from-sky-50 to-sky-100 text-sky-800 border-sky-200",
+    "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-800 border-blue-200",
+    "bg-gradient-to-r from-indigo-50 to-indigo-100 text-indigo-800 border-indigo-200",
+    "bg-gradient-to-r from-violet-50 to-violet-100 text-violet-800 border-violet-200",
+  ];
   return (
-    <div className="flex flex-col items-center gap-1.5">
-      <p className="mb-1 text-xs font-bold text-text-muted">{title}</p>
+    <div className="flex flex-col items-center gap-1.5 w-full max-w-xs">
       {layers.map((l, i) => (
-        <div key={l} className={cn("flex w-full max-w-xs items-center justify-between rounded-lg border px-4 py-2 text-sm font-bold", colors[i % colors.length])}>
-          <span className="font-mono text-[10px] text-text-light">{i + 1}</span>
+        <div key={l} className={cn("flex w-full items-center justify-between rounded-xl border px-4 py-2.5 text-sm font-bold shadow-sm bg-gradient-to-r", colors[i % colors.length])}>
+          <span className="grid size-5 place-items-center rounded-md bg-white/70 font-mono text-[10px] text-text-light">{i + 1}</span>
           <span>{l}</span>
+          <span className="text-[9px] text-text-light/70">{i === 0 ? "بالا" : i === layers.length - 1 ? "پایین" : ""}</span>
         </div>
       ))}
+      <p className="mt-2 text-[10px] font-bold uppercase tracking-wider text-text-light">{title}</p>
     </div>
   );
 }
